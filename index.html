@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <!-- أضف هذه السطور في قسم head -->
+    <meta name="theme-color" content="#3b82f6">
+    <meta name="description" content="تطبيق الأذان يعمل بدون إنترنت">
+    <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تطبيق الأذان</title>
+    <!-- Tailwind CSS -->
+     <link href="./css/tailwind.min.css" rel="stylesheet">
+    <!-- SweetAlert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+        .prayer-card {
+            transition: all 0.3s ease;
+        }
+        .prayer-card:hover {
+            transform: translateY(-5px);
+        }
+        .active-prayer {
+            background-color: #3b82f6;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-blue-800 mb-2">مواقيت الصلاة</h1>
+            <p class="text-gray-600" id="date-display"></p>
+        </header>
+
+        <div class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-4 rounded-lg shadow">
+            <div class="mb-4 md:mb-0">
+                <label for="city" class="block text-gray-700 mb-2 font-medium">اختر المدينة:</label>
+                <select id="city" class="border border-gray-300 rounded px-4 py-2 w-full md:w-64">
+                    <option value="Cairo">القاهرة</option>
+                    <option value="Riyadh">الرياض</option>
+                    <option value="Dubai">دبي</option>
+                    <option value="Mecca">مكة المكرمة</option>
+                    <option value="Medina">المدينة المنورة</option>
+                    <option value="Amman">عمان</option>
+                    <option value="Beirut">بيروت</option>
+                    <option value="Khartoum">الخرطوم</option>
+                </select>
+            </div>
+            <div>
+                <label for="method" class="block text-gray-700 mb-2 font-medium">طريقة الحساب:</label>
+                <select id="method" class="border border-gray-300 rounded px-4 py-2 w-full md:w-64">
+                    <option value="5">رابطة العالم الإسلامي</option>
+                    <option value="3">جامعة العلوم الإسلامية، كراتشي</option>
+                    <option value="2">جمعية أم القرى</option>
+                    <option value="1">جامعة الأزهر</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-8" id="prayer-times-container">
+            <!-- Prayer times will be loaded here -->
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow">
+            <h2 class="text-xl font-semibold text-blue-800 mb-4">الأذان القادم</h2>
+            <div class="flex items-center justify-between bg-blue-50 p-4 rounded-lg">
+                <div>
+                    <h3 class="text-lg font-medium" id="next-prayer-name"></h3>
+                    <p class="text-gray-600" id="next-prayer-time"></p>
+                </div>
+                <div class="text-right">
+                    <p class="text-2xl font-bold text-blue-600" id="countdown"></p>
+                    <p class="text-gray-500 text-sm">متبقي حتى الأذان</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center text-gray-500 text-sm">
+            <p>تم التطوير باستخدام <a href="https://ahmeddowedar.engineer" class="text-blue-600">Eng. Ahmed Dowedar</a></p>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
